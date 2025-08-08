@@ -1,0 +1,30 @@
+projected bands structure
+
+1. run pw.x with calculation = 'scf'
+2. run pw.x with calculation = 'bands'
+3. run projwfc.x with:
+	&projwfc
+	    outdir       = 'path/name/'
+	    prefix       = 'name'
+	    ngauss       = 0
+	    degauss      = 0.01
+	    DeltaE       = 0.005
+	    kresolveddos = .true.
+	    filpdos      = 'name.k'
+	/
+4. run script projwfc_to_bands.awk (ref: https://gitlab.com/QEF/q-e/-/tree/develop/PP/examples/projected_bands_example) 
+  with command: awk -v firststate=XXX -v laststate=XXX -v ef=XXX -f path-to/projwfc_to_bands.awk projwfc.out > fileout
+	Where first/laststate is specific orbital that you need (can be set exceed the actual state in case need to extract all). 
+	ef is Fermi energy. path-to is path to awk script. 
+	projwfc.out is your output of projwfc.x
+ 	fileout is ouput for plotting projected-bands.
+5. plot your awk output (scatter plot with hilighted specific orbital)
+	example:	for inbnd in range(nbnd):
+			    plt.plot(data[:, inbnd, 1], data[:, inbnd, 2], c='black')
+			    plt.scatter(data[:, inbnd, 1],
+			                data[:, inbnd, 2],
+			                c=data[:,inbnd, col],
+		        	        s=10*data[:,inbnd, col],
+		                	vmin=0, vmax=0.5)
+
+
