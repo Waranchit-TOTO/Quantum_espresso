@@ -5,8 +5,8 @@
 #SBATCH -N 2
 #SBATCH --ntasks-per-node=128
 #SBATCH -t 2-00:00:00
-#SBATCH -J O2p
-#SBATCH -A pv825005
+#SBATCH -J name
+#SBATCH -A name-project
 
 module purge
 module load intel/2023.1.0
@@ -16,7 +16,7 @@ export OMP_NUM_THREADS=1
 ulimit -s unlimited
 cd $SLURM_SUBMIT_DIR
 
-export PATH=/project/pv825005-mofmlp/src/qe_7.3_environ/bin/:$PATH
+export PATH=/project/project-name/src/qe_7.3_environ/bin/:$PATH
 
 # Loop over U values from 1 to 8
 for U in {1..8}; do

@@ -6,7 +6,7 @@
 #SBATCH --ntasks-per-node=128
 #SBATCH -t 23:00:00
 #SBATCH -J O2p
-#SBATCH -A pv825005
+#SBATCH -A proj-name
 
 module purge
 module load intel/2023.1.0
