@@ -11,3 +11,6 @@ X-codes are:
     00-shell script for template varying metal dope to host structure.
     01-shell script for looping and submittng jobs.
 
+The checking and pulling energy output (final relaxation step)
+pull-E.sh, this code will check if it is final relaxation (relaxed) and show its total energy.
+
