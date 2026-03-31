@@ -11,6 +11,7 @@ if Q != 'no' :
 
     lay = input('Number of layers: ')
     vac = input('Vacuum size (Angstrom): ')
+    # change (1,1,0) to facet you need 
     unit = surface(unit, (1,1,0), layers = int(lay), vacuum = float(vac))
 
 print('Making supercell: ')
